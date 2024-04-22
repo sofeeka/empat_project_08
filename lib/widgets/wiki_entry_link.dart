@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class WikiEntryLink extends StatefulWidget {
-  const WikiEntryLink({super.key, required this.pageName});
+  const WikiEntryLink({
+    Key? key,
+    required this.pageName,
+    required this.onColorChanged,
+  }) : super(key: key);
 
   final String pageName;
+  final ValueChanged<Color?> onColorChanged;
 
   @override
   State<WikiEntryLink> createState() => _WikiEntryLinkState();
@@ -12,23 +17,24 @@ class WikiEntryLink extends StatefulWidget {
 class _WikiEntryLinkState extends State<WikiEntryLink> {
   Color? backgroundColor;
 
-  void changeBackgroundColor(Color color) {
-    setState(() {
-      backgroundColor = color;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(
+        onTap: () async {
+          final result = await Navigator.pushNamed(
             context,
             '/wikiPageDetail',
             arguments: {'pageName': widget.pageName},
           );
+
+          if (result != null && result is Color) {
+            setState(() {
+              backgroundColor = result;
+            });
+            widget.onColorChanged(backgroundColor);
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(12.0),

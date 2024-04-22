@@ -18,8 +18,6 @@ class _WikiPageScreenState extends State<WikiPageScreen> {
     // Sample content with links
     content = '''
       This is the content of ${widget.pageName}.
-      Click on [Flutter](#Flutter) to learn more about Flutter.
-      Click on [Dart](#Dart) to learn more about Dart.
     ''';
   }
 
@@ -36,29 +34,35 @@ class _WikiPageScreenState extends State<WikiPageScreen> {
           children: [
             Text(content),
             const SizedBox(height: 20),
+            buildElevatedButton(context, 'Flutter'),
+            buildElevatedButton(context, 'Dart'),
+            buildElevatedButton(context, 'Widgets'),
+            buildElevatedButton(context, 'State Management'),
+            buildElevatedButton(context, 'Navigation'),
+            buildElevatedButton(context, 'UI/UX'),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/wikiPageDetail',
-                  arguments: {'pageName': 'Flutter'},
-                );
+                Navigator.pop(context, Colors.black12);
               },
-              child: const Text('Flutter'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/wikiPageDetail',
-                  arguments: {'pageName': 'Dart'},
-                );
-              },
-              child: const Text('Dart'),
+              child: const Icon(Icons.arrow_back),
             ),
           ],
         ),
       ),
     );
+  }
+
+  ElevatedButton buildElevatedButton(BuildContext context, String name) {
+    return ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/wikiPageDetail',
+                arguments: {'pageName': name},
+              );
+            },
+            child: Text(name),
+          );
   }
 }
