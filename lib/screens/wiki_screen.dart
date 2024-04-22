@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class WikiHomeScreen extends StatelessWidget {
+import '../widgets/wiki_link.dart';
 
+class WikiHomeScreen extends StatelessWidget {
   WikiHomeScreen({super.key});
 
   final List<String> pages = [
@@ -22,16 +23,7 @@ class WikiHomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: pages.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(pages[index]),
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                '/wikiPageDetail',
-                arguments: {'pageName': pages[index]},
-              );
-            },
-          );
+          return WikiEntryLink(pageName: pages[index]);
         },
       ),
     );

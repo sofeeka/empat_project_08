@@ -1,7 +1,6 @@
 
 import 'package:empat_project_08/screens/home_screen.dart';
 import 'package:empat_project_08/screens/page_detail_screen.dart';
-import 'package:empat_project_08/wiki_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,11 +16,11 @@ class MyApp extends StatelessWidget {
       title: 'Wiki App',
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyHomePage(title: 'Wiki App'),
-        '/wikiPageDetail' : (context) {
+        '/': (context) => const MyHomePage(title: 'Wiki App'), // 1
+        '/wikiPageDetail' : (context) { // 2
           final arguments = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
           final pageName = arguments['pageName'] as String;
-          return WikiPageScreen(pageName: pageName);
+          return WikiPageScreen(pageName: pageName); // 3
         }
       },
       onUnknownRoute: (settings) {

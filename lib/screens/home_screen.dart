@@ -1,8 +1,9 @@
-import 'package:empat_project_08/screens/wiki_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:empat_project_08/screens/wiki_screen.dart';
+import 'package:empat_project_08/screens/page_detail_screen.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -10,7 +11,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   late TabController _controller;
 
@@ -44,25 +46,20 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          WikiHomeScreen(),
+          const WikiPageScreen(pageName: 'Placeholder'),
+        ],
+      ),
       bottomNavigationBar: TabBar(
         controller: _controller,
         tabs: const [
-          Tab(icon: Icon(Icons.home), text: 'Home' ),
+          Tab(icon: Icon(Icons.home), text: 'Home'),
           Tab(icon: Icon(Icons.article), text: 'Wiki'),
         ],
         onTap: _onTabIndexChanged,
-      ),
-      body: TabBarView(
-        controller: _controller,
-        children: [
-          WikiHomeScreen(),
-          // Add other screens as needed
-          Container(
-            child: const Center(
-              child: Text('Wiki Screen Placeholder'),
-            ),
-          ),
-        ],
       ),
     );
   }
