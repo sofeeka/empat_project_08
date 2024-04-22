@@ -1,6 +1,6 @@
 
 import 'package:empat_project_08/screens/home_screen.dart';
-import 'package:empat_project_08/screens/page_detail_screen.dart';
+import 'package:empat_project_08/screens/wiki_page_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

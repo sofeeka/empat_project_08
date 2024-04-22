@@ -15,7 +15,6 @@ class _WikiPageScreenState extends State<WikiPageScreen> {
   @override
   void initState() {
     super.initState();
-    // Sample content with links
     content = '''
       This is the content of ${widget.pageName}.
     ''';
@@ -55,14 +54,14 @@ class _WikiPageScreenState extends State<WikiPageScreen> {
 
   ElevatedButton buildElevatedButton(BuildContext context, String name) {
     return ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/wikiPageDetail',
-                arguments: {'pageName': name},
-              );
-            },
-            child: Text(name),
-          );
+      onPressed: () {
+        Navigator.pushNamed(
+          context,
+          '/wikiPageDetail',
+          arguments: {'pageName': name},
+        );
+      },
+      child: Text(name),
+    );
   }
 }

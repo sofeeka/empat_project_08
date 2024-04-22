@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:empat_project_08/screens/wiki_screen.dart';
-import 'package:empat_project_08/screens/page_detail_screen.dart';
+import 'package:empat_project_08/screens/wiki_home_screen.dart';
+import 'package:empat_project_08/screens/wiki_page_screen.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
