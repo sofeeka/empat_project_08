@@ -42,7 +42,7 @@ class _WikiPageScreenState extends State<WikiPageScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, Colors.black12);
+                Navigator.pop(context, Colors.black12); // 4
               },
               child: const Icon(Icons.arrow_back),
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:empat_project_08/screens/wiki_home_screen.dart';
-import 'package:empat_project_08/screens/wiki_page_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -50,10 +49,10 @@ class _MyHomePageState extends State<MyHomePage>
         index: _selectedIndex,
         children: [
           WikiHomeScreen(),
-          const WikiPageScreen(pageName: 'Placeholder'),
+          const Center(child: Text('Wiki ^^', style: TextStyle(fontSize: 26),)),
         ],
       ),
-      bottomNavigationBar: TabBar(
+      bottomNavigationBar: TabBar( // 5
         controller: _controller,
         tabs: const [
           Tab(icon: Icon(Icons.home), text: 'Home'),
